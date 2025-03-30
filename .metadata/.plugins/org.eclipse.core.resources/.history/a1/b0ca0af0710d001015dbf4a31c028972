@@ -2,6 +2,10 @@ package StudyStack;
 
 import java.util.*;
 
+/*
+ * This class handles menu design and the user interaction.
+ */
+
 public class Interface {
 
 	public static void main(String[] args) throws Exception {
@@ -14,20 +18,21 @@ public class Interface {
 	public static void printLogo() {
 	    System.out.println("  _____ _           _         _____ _             _   __  ");
 	    System.out.println(" / ____| |         | |       / ____| |           | | / /   ");
-	    System.out.println("| (____| |_   _  __| |   __ | (___ | |_ __ _ _ __| |/_/  ");
-	    System.out.println(" \\___|_| |_| | |/ _` |\\ / / \\___ \\| __/ _` | '__| '_  \\ ");
-	    System.out.println(" ____) | | |_| | (_| ||/ /  ____) | || (_| | |__| |_| |");
-	    System.out.println("|_____/|_|\\__,_|\\__,_|/ /  |_____/ \\__\\__,_|____|_| |_|");
-	    System.out.println("                     /_/                                 ");
+	    System.out.println("| (__ _| |_   _  __| |__  __| (___ | |_ __ _ ____| |/_/  ");
+	    System.out.println(" \\___|_| |_| | |/ _` | | / / \\___ \\| __/ _` |  __| |_  \\ ");
+	    System.out.println(" ____) | | |_| | (_| | |/ /  ____) | || (_| | |__| |_| |");
+	    System.out.println("|_____/|_|\\__,_|\\__,_|\\/ /  |_____/ \\__\\__,_|____|_| |_|");
+	    System.out.println("                      /_/                                 ");
+	    System.out.println("                                                       ");
 	    System.out.println("                     StudyStack                        ");
 	    System.out.println();
 	}
 	
 	// menu design.
 	public static void courseShowMenu() {
-		System.out.println("|=================|\n" + 
-				  		   "|--- Main Menu ---|\n" +
-				  		   "|=================|\n" +
+		System.out.println("|=========================|\n" + 
+				  		   "|------- Main Menu -------|\n" +
+				  		   "|=========================|\n" +
 				  		   "1. Add course\n" +
 				  		   "2. Edit course\n" +
 				  		   "3. Delete course\n" +
