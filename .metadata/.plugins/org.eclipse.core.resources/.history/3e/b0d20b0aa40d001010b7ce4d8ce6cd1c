@@ -140,7 +140,7 @@ public class CourseList {
 	                    System.out.println("\n***Homework for this course***");
 	                    for (int i = 0; i < homework.size(); i++) {
 	                        Homework work = homework.get(i);
-	                        System.out.println(i + ". Name: " + work.getName() + " | Due date: " + work.getDueDate());
+	                        System.out.println(i + ". Name: " + work.getName() + " | Quantity: " + work.getDueDate());
 	                    }
 	                    
 	                    // This while loop controls the input of the user

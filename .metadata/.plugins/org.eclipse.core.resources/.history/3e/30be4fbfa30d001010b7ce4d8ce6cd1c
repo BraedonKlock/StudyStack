@@ -140,7 +140,7 @@ public class CourseList {
 	                    System.out.println("\n***Homework for this course***");
 	                    for (int i = 0; i < homework.size(); i++) {
 	                        Homework work = homework.get(i);
-	                        System.out.println(i + ". Name: " + work.getName() + " | Due date: " + work.getDueDate());
+	                        System.out.println(i + ". Name: " + work.getName() + " | Quantity: " + work.getDueDate());
 	                    }
 	                    
 	                    // This while loop controls the input of the user
@@ -307,15 +307,15 @@ public class CourseList {
 	        for (int i = 0; i < CourseList.size(); i++) {
 	            Course course = CourseList.get(i);
 	            String courseName = course.getName().toLowerCase();
-	            String courseCode = course.getCourseCode().toLowerCase();
-	            StringBuilder homeworkNames = new StringBuilder();
+	            String description = course.getCourseCode().toLowerCase();
+	            StringBuilder toolNames = new StringBuilder();
 
 	            for (Homework homework : course.getHomework()) {
-	                homeworkNames.append(homework.getName().toLowerCase()).append(" ");
+	                toolNames.append(homework.getName().toLowerCase()).append(" ");
 	            }
 
 	            // Match user input against all three fields course name, course code and homework
-	            if (courseName.contains(term) || courseCode.contains(term) || homeworkNames.toString().contains(term)) {
+	            if (courseName.contains(term) || description.contains(term) || toolNames.toString().contains(term)) {
 	                System.out.println(i + ". " + course);
 	                found = true; // found set to true so that the next if statement doesn't execute
 	            }
