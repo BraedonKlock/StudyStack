@@ -1,12 +1,16 @@
 package StudyStack;
 
+import java.util.*;
+
 public class Interface {
 
-	public static void main(String[] args) {
-		System.out.println("It worked you nerd!");
-		printLogo();
+	public static void main(String[] args) throws Exception {
+        courseMenu();
 	}
 	
+	static Scanner scanner = new Scanner(System.in);
+	
+	// Logo
 	public static void printLogo() {
 	    System.out.println("  _____ _           _         _____ _             _   __  ");
 	    System.out.println(" / ____| |         | |       / ____| |           | | / /   ");
@@ -18,6 +22,82 @@ public class Interface {
 	    System.out.println("                     StudyStack                        ");
 	    System.out.println();
 	}
-
-
+	
+	// menu design.
+	public static void courseShowMenu() {
+		System.out.println("|=================|\n" + 
+				  		   "|--- Main Menu ---|\n" +
+				  		   "|=================|\n" +
+				  		   "1. Add course\n" +
+				  		   "2. Edit course\n" +
+				  		   "3. Delete course\n" +
+				  		   "4. Search course\n" +
+				  		   "5. List all courses\n" +
+				  		   "6. Exit\n" +
+				  		   "Choose an option (enter #): ");
+	}
+	
+	// menu interface
+	public static void courseMenu() throws Exception {
+		int option = 0;
+		
+		do {
+			try {
+				CourseList.loadFromFile();
+			printLogo();
+			courseShowMenu();
+			option = Integer.parseInt(scanner.nextLine().trim());
+			switch (option) {
+			case 1: try {
+					CourseList.addCourse();
+					} catch (StudyStackException e){
+						System.out.println(e.getMessage());
+					}
+					break;
+					
+			case 2: try {
+					CourseList.editCourse();
+					} catch (StudyStackException e){
+					System.out.println(e.getMessage());
+					}
+					break;
+					
+			case 3: try {
+					CourseList.deleteCourse();
+					} catch (StudyStackException e){
+					System.out.println(e.getMessage());
+					}
+					break;
+					
+			case 4:try {
+					CourseList.searchCourse();
+					} catch (StudyStackException e){
+						System.out.println(e.getMessage());
+					}
+					break;
+					
+			case 5: try {
+					CourseList.listCourses();
+					} catch (StudyStackException e){
+						System.out.println(e.getMessage());
+					}
+					break;
+					
+			case 6: exit();
+					break;
+					
+			default: System.out.println("\n***Not a valid option***\n");
+			}
+			} catch(NumberFormatException e) {
+				System.out.println("\n***Invalid option! try again***\n");
+			}
+			option = 0;
+		} while (option != 6);
+	}
+	
+	// exit method
+	public static void exit() {
+		System.out.println("\n***Exiting***\n");
+		scanner.close();
+	}
 }
