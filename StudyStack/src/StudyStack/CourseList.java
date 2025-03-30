@@ -13,64 +13,51 @@ public class CourseList {
 	 
 	 static List<Course> CourseList = new ArrayList<>();
 	 
-	 // Add jobs and associated tools and materials
+	 // Add courses and associated homework
 	public static void addCourse() throws StudyStackException {
-    System.out.println("Enter job name (or type \"Exit\"): ");
+    System.out.println("Enter course name (or type \"2\" to exit): ");
     String name = scanner.nextLine();
-    if (name.equalsIgnoreCase("Exit")) return;
+    if (name.trim().equals("2")) return;
 
-    System.out.println("Enter course code (or type \"Exit\"): ");
+    System.out.println("Enter course code (or type \"2\" to exit): ");
     String courseCode = scanner.nextLine();
-    if (courseCode.equalsIgnoreCase("Exit")) return;
+    if (courseCode.trim().equals("2")) return;
     
     Course course = new Course(name, courseCode);
 
-    // Adding tools. While loop controls flow
+    // Adding homework. While loop controls flow
     while (true) {
-        System.out.println("Add Homework? (yes/no):");
+        System.out.println("Add Homework? (1 = yes/2 = no):");
         String response = scanner.nextLine().trim().toLowerCase();
 
-        if (response.equals("no")) {
+        if (response.trim().equals("2"))
             break;
-        } else if (response.equals("yes")) {
+         else if (response.trim().equals("1")) {
         	
         	// While loop controls flow and user input
             while (true) {
-                System.out.println("Homework name (or type \"Exit\" to stop adding homework):"); //
+                System.out.println("Homework name (or type \"2\" to stop adding homework):"); //
                 String homeworkName = scanner.nextLine();
-                if (homeworkName.equalsIgnoreCase("Exit")) break;
+                if (homeworkName.trim().equals("2")) break;
 
-                int dueDate = 0;
-                while (true) {
-                    System.out.println("Due date (must be a number):");
-                    String dueDateStr = scanner.nextLine();
-                    if (dueDateStr.equalsIgnoreCase("Exit")) break;
-
-                    try {
-                        dueDate = Integer.parseInt(dueDateStr);
-                        if (dueDate < 1) throw new NumberFormatException(); // User must input number greater than 0
-                        break;
-                    } catch (NumberFormatException e) {
-                        System.out.println("\n***Invalid number. Please enter a valid positive number***\n"); // catches letters
-                    }
-                }
-                
-                // Adds tools to job
-                course.addHomework(new Homework(homeworkName, Integer.toString(dueDate)));
+                    System.out.println("Due date (or type \"2\" to exit:");
+                   String dueDate = scanner.nextLine();
+                    if (dueDate.trim().equals("2")) break;   
+            
+                // Adds homework to courses
+                course.addHomework(new Homework(homeworkName, dueDate));
+            	}
             }
-        } else {
-            System.out.println("\n***Invalid input! Please enter \"yes\" or \"no\"***\n");
         }
-    
-        	// Add the job to the list after materials are added
+        
+        	// Add the course to the list
         	CourseList.add(course);
         	System.out.println("\n***course added!***\n");
         	saveToFile();
         	System.out.println("\n***course saved successfully!***\n");
         }
-    }
-	
-	// Editing Job attributes and associated tools and materials
+    
+	// Editing course attributes and associated homework
 	public static void editCourse() throws StudyStackException {
 	    if (CourseList.isEmpty()) {
 	        throw new StudyStackException("\n***There are no jobs to edit***\n");
@@ -80,14 +67,14 @@ public class CourseList {
 	    
 	    int index;
 	    
-	    // Finding job and using while loop to control flow and user input
+	    // Finding course and using while loop to control flow and user input
 	    while (true) {
 	        try {
 	            System.out.print("Enter course number to edit: ");
 	            index = Integer.parseInt(scanner.nextLine());
 
 	            if (index < 0 || index >= CourseList.size()) {
-	                System.out.println("\n***Invalid input! Enter a number between 0 and " + (CourseList.size() - 1) + "***\n");// input must be within JobList size
+	                System.out.println("\n***Invalid input! Enter a number between 0 and " + (CourseList.size() - 1) + "***\n");// input must be within courseList size
 	            } else {
 	                break;
 	            }
@@ -96,35 +83,35 @@ public class CourseList {
 	        }
 	    }
 	    
-	    //gets the job number the user inputed
+	    //gets the course number the user inputed
 	    Course course = CourseList.get(index);
 	    System.out.println("\nEditing Job: " + course.getName());
 	    
-	    // Editing Job name
+	    // Editing course name
 	    System.out.print("New name (or press Enter to keep): ");
 	    String newName = scanner.nextLine();
 	    if (!newName.isEmpty()) course.setName(newName);
 	    
-	    // Editing Job description(notes)
+	    // Editing course code
 	    System.out.print("\nNew course code (or press Enter to keep): ");
 	    String newDesc = scanner.nextLine();
 	    if (!newDesc.isEmpty()) course.setCourseCode(newDesc);
 	    
-	    //while loop to control user input on whether they want to edit tools
+	    //while loop to control user input on whether they want to edit homework
 	    while (true) {
-	        System.out.print("\nDo you want to edit homework? (yes/no): ");
+	        System.out.print("\nDo you want to edit homework? (1 = yes/2 = no): ");
 	        String homeworkEdit = scanner.nextLine();
 
-	        if (homeworkEdit.equalsIgnoreCase("no")) break;
+	        if (homeworkEdit.trim().equals("2")) break;
 
-	        if (homeworkEdit.equalsIgnoreCase("yes")) {
+	        if (homeworkEdit.trim().equals("1")) {
 	        	
-	        	// While loop to control user input. gives user ability to stay in the "add, edit, or delete tool" loop
+	        	// While loop to control user input. gives user ability to stay in the "add, edit, or delete homework" loop
 	            while (true) {
-	                System.out.print("\nDo you want to Add, Edit, or Delete homework? (Add/Edit/Delete/Exit): ");
+	                System.out.print("\nDo you want to Add, Edit, or Delete homework? (Add/Edit/Delete/type \"2\" to Exit): ");
 	                String action = scanner.nextLine();
 
-	                if (action.equalsIgnoreCase("Exit")) break;
+	                if (action.trim().equals("2")) break;
 
 	                if (action.equalsIgnoreCase("Edit")) {
 	                    List<Homework> homework = course.getHomework();
@@ -134,7 +121,7 @@ public class CourseList {
 	                        continue;
 	                    }
 	                    
-	                    // Lists Tools for users chosen job
+	                    // Lists homework for users chosen course
 	                    System.out.println("\n***Homework for this course***");
 	                    for (int i = 0; i < homework.size(); i++) {
 	                        Homework work = homework.get(i);
@@ -170,44 +157,25 @@ public class CourseList {
 	                    
 	                    // Editing homework due date
 	                    System.out.print("\nNew due date (or press Enter to keep): ");
-	                    String newDueDateStr = scanner.nextLine();
-	                    if (!newDueDateStr.isEmpty()) {
-	                        try {
-	                            int newDueDate = Integer.parseInt(newDueDateStr);
-	                            if (newDueDate < 1) {
-	                                System.out.println("\n***Due date must be positive***\n");// Quantity must be positive
-	                            } else {
-	                            	selectedHomework.setDueDate(Integer.toString(newDueDate));
-	                                System.out.println("\n***Tool updated***\n");
-	                            }
-	                        } catch (NumberFormatException e) {
-	                            System.out.println("\n***Invalid number. due date not updated***\n"); // Catches Letters
-	                        }
+	                    String newDueDate = scanner.nextLine();
+	                    if (!newDueDate.isEmpty()) {
+                        	selectedHomework.setDueDate(newDueDate);
+                            System.out.println("\n***Homework updated***\n");     
 	                    }
 	                    
 	                    //Adding homework to users chosen course
 	                } else if (action.equalsIgnoreCase("Add")) {
-	                    System.out.print("\nTool name (or type 'Exit' to cancel): ");
+	                    System.out.print("\nHomework name (or type \"2\" to cancel): ");
 	                    String hwName = scanner.nextLine();
-	                    if (hwName.equalsIgnoreCase("Exit")) continue;
+	                    if (hwName.trim().equals("2")) continue;
 
-	                    int dueDate = 0;
-	                    while (true) {
-	                        System.out.print("\nDue date (must be a number): ");
-	                        String dueDateStr = scanner.nextLine();
-
-	                        try {
-	                            dueDate = Integer.parseInt(dueDateStr);
-	                            if (dueDate < 1) throw new NumberFormatException();// Quantity must be greater than 0
-	                            break;
-	                        } catch (NumberFormatException e) {
-	                            System.out.println("\n***Invalid number. Please enter a valid positive number***\n"); // Catches letters
-	                        }
-	                    }
-	                    
-	                   // Adding new tool to users chosen job 
-	                    course.addHomework(new Homework(hwName, Integer.toString(dueDate)));
+                        System.out.print("\nDue date (must be a number): ");
+                        String dueDate = scanner.nextLine();
+	                      
+	                   // Adding new homework to users chosen course
+	                    course.addHomework(new Homework(hwName, dueDate));
 	                    System.out.println("\n***homework added***\n");
+	      
 	                } else if (action.equalsIgnoreCase("Delete")) {
 	                    List<Homework> homework = course.getHomework();
 
@@ -220,13 +188,13 @@ public class CourseList {
 	                        System.out.println(i + ". " + homework.get(i).getName() + " | Due date: " + homework.get(i).getDueDate());
 	                    }
 	                    
-	                    // Deleting tool
+	                    // Deleting homework
 	                    int deleteIndex;
 	                    while (true) {
 	                        System.out.print("\nEnter the homework number to delete: ");
 	                        try {
 	                            deleteIndex = Integer.parseInt(scanner.nextLine());
-	                            if (deleteIndex < 0 || deleteIndex >= homework.size()) { //Users input must be within tool.size
+	                            if (deleteIndex < 0 || deleteIndex >= homework.size()) { //Users input must be within homework.size
 	                                System.out.println("\n***Invalid homework number***\n");
 	                            } else {
 	                                break;
@@ -236,25 +204,25 @@ public class CourseList {
 	                        }
 	                    }
 	                    
-	                    // Removing tool from tools array
+	                    // Removing homework from course array
 	                    Homework removedHw = homework.remove(deleteIndex);
 	                    System.out.println("\nDeleted homework: " + removedHw.getName());
 	                } else {
-	                    System.out.println("\n***Invalid input. Please enter Add, Edit, Delete, or Exit***\n");
+	                    System.out.println("\n***Invalid input. Please enter Add, Edit, Delete, or type \"2\" to exit***\n");
 	                }
 	            }
 	        } else {
-	            System.out.println("\n***Invalid input! Please enter 'yes' or 'no'***\n");
+	            System.out.println("\n***Invalid input! Please enter '1 = yes' or '2 = no'***\n");
 	        }
 	    }
 	    saveToFile();
 	    System.out.println("\n***Course updated successfully***\n");
 	}
 	
-		// Delete job method
+		// Delete course method
 	    public static void deleteCourse() throws Exception {
 	        if (CourseList.isEmpty()) {
-	            throw new Exception("\n***There are no courses to delete***\n"); // Handles empty jobList
+	            throw new Exception("\n***There are no courses to delete***\n"); // Handles empty courseList
 	        }
 
 	        listCourses(); 
@@ -263,7 +231,7 @@ public class CourseList {
 	        
 	        // While loop controls flow
 	        while (true) {
-	            System.out.print("Enter course number to delete: ");
+	            System.out.print("Enter course number to delete or type \"Exit\" to exit: ");
 	            String input = scanner.nextLine();
 	            
 	            if(input.equalsIgnoreCase("Exit")) {
@@ -274,7 +242,7 @@ public class CourseList {
 	                index = Integer.parseInt(input);
 
 	                if (index < 0 || index >= CourseList.size()) {
-	                    System.out.println("\n***Invalid course number! Please enter a number between 0 and " + (CourseList.size() - 1) + "***\n"); // Users input must be within jobList size
+	                    System.out.println("\n***Invalid course number! Please enter a number between 0 and " + (CourseList.size() - 1) + "***\n"); // Users input must be within CourseList size
 	                } else {
 	                    break;
 	                }
@@ -285,36 +253,37 @@ public class CourseList {
 	        
 	        // Confirm deletion. While loop controls user input
 	        while(true) {
-		        System.out.println("\n***are you sure you want to delete this course:\n" + CourseList.get(index) + "***\n");
-		        String confirm= scanner.nextLine();
+		        System.out.println("\n***are you sure you want to delete this course? type 1 = \"yes\" or 2 = \"no\":\n" + CourseList.get(index) + "***\n");
+		        int confirm = scanner.nextInt();
 		        try {
-		        if (confirm.equalsIgnoreCase("yes")) {
+		        if (confirm == 1) {
 		        	Course removed = CourseList.remove(index);
 		        	System.out.println("Deleted: " + removed.getName());
 		        	saveToFile();
 		        	return;
-		        } else if (confirm.equalsIgnoreCase("no")) {
+		        } else if (confirm == 2) {
 		        	System.out.println("\n***Deletion cancelled***\n");
 		        	return;
 		        }
 		        else {
-		        	System.out.println("\n***Invalid input enter \"yes\" or \"no\"***\n");
+		        	System.out.println("\n***Invalid input enter 1 for\"yes\" or 2 for\"no\"***\n");
 		        }
 		        
 		        } catch (NumberFormatException e) {
-		        	System.out.println("\n***Invalid input enter \\\"yes\\\" or \\\"no\\\"***\n");
+		        	System.out.println("\n***Invalid input enter 1 for \"yes\" or 2 for\"no\"***\n");
 		        }
 	        }
 	    }
 	    
-	    // Search job method
+	    // Search course method
 	    public static void searchCourse() throws StudyStackException {
 	    	if (CourseList.isEmpty()) {
-	            throw new StudyStackException("\n***No jobs to search***\n"); // handling empty jobList
+	            throw new StudyStackException("\n***No jobs to search***\n"); // handling empty CourseList
 	        }
 
-	        System.out.println("\nEnter any keyword to search (course name, description, or tool name):");
+	        System.out.println("\nEnter any keyword to search (course name, description, or tool name) or type \"2\" to exit:");
 	        String term = scanner.nextLine().toLowerCase();
+	        if (term.trim().equals(2)) return;
 
 	        // using a boolean value to control flow.
 	        boolean found = false;
@@ -330,7 +299,7 @@ public class CourseList {
 	                toolNames.append(homework.getName().toLowerCase()).append(" ");
 	            }
 
-	            // Match user input against all three fields job name, description, and tools
+	            // Match user input against all three fields course name, course code and homework
 	            if (courseName.contains(term) || description.contains(term) || toolNames.toString().contains(term)) {
 	                System.out.println(i + ". " + course);
 	                found = true; // found set to true so that the next if statement doesn't execute
@@ -340,31 +309,30 @@ public class CourseList {
 	        if (!found) {
 	            System.out.println("\n***No course found matching \"" + term + "\"***\n");
 	        }
-	    	
 	    }
 	    
-	    // This method Loads data from the 'jobs.csv' file
+	    // This method Loads data from the 'courses.csv' file
 	    public static void loadFromFile() {
-//	        CourseList.clear(); // Clearing existing jobs before loading new one
+	        CourseList.clear(); // Clearing existing course before loading new one
 
-	        try (BufferedReader br = new BufferedReader(new FileReader("courses.csv"))) {
+	        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\braed\\AcademicProjects\\StudyStack\\StudyStack\\courses.csv"))) {
 	            String line; // Holds each line of the file
 	            while ((line = br.readLine()) != null) { // Read each line until end of file
-	                String[] parts = line.split(",", 3); // name, description, tools, materials
+	                String[] parts = line.split(",", 3); // name, course code, homework
 
 	                if (parts.length < 3) continue;// Skips lines that don't have all parts
 
 	                Course course = new Course(parts[0], parts[1]);
 
-	                // Tools
-	                String[] hwData = parts[2].split("\\|"); // Splitting tools by '|'
+	                // homework
+	                String[] hwData = parts[2].split("\\|"); // Splitting homework by '|'
 	                for (String hwEntry : hwData) {
-	                    String[] hwParts = hwEntry.split(":"); // Split tool name and quantity
+	                    String[] hwParts = hwEntry.split(":"); // Split homework name and duedate
 	                    if (hwParts.length == 2) {
-	                        course.addHomework(new Homework(hwParts[0], hwParts[1])); // Add tool to job
+	                        course.addHomework(new Homework(hwParts[0], hwParts[1])); // Add homework to course
 	                    }
 	                }
-	                CourseList.add(course); // Add job to JobList array
+	                CourseList.add(course); // Add course to courseList array
 	            }
 
 	            System.out.println("\n***courses loaded from file***\n");
@@ -376,25 +344,25 @@ public class CourseList {
 	    
 	    public static void listCourses() throws StudyStackException {
 			  if (CourseList.isEmpty()) {
-			        throw new StudyStackException("\n***No courses found***\n"); // Throw error if no job exists
+			        throw new StudyStackException("\n***No courses found***\n"); // Throw error if no course exists
 			    }
 
 			    for (int i = 0; i < CourseList.size(); i++) {
 			        System.out.println("==================================="//35
-			        		+ "\n---COURSE # " + i +"---" + "\n" + CourseList.get(i) + // Printing job and the border around the job
+			        		+ "\n---COURSE # " + i +"---" + "\n" + CourseList.get(i) + // Printing course and the border around the course
 			        		"===================================\n");
 			    }
 	    }
 	    
-	    // This method saves the jobList array to the CSV file
+	    // This method saves the CourseList array to the CSV file
 	    public static void saveToFile() {
-	        try (FileWriter writer = new FileWriter("courses.csv")) {
+	        try (FileWriter writer = new FileWriter("C:\\Users\\braed\\AcademicProjects\\StudyStack\\StudyStack\\courses.csv")) {
 	            for (Course course : CourseList) {
 	                StringBuilder line = new StringBuilder();
 	                line.append(course.getName()).append(",");
 	                line.append(course.getCourseCode()).append(",");
 
-	                // Tools
+	                // homework
 	                List<Homework> homework = course.getHomework();
 	                for (int i = 0; i < homework.size(); i++) {
 	                    Homework hw = homework.get(i);

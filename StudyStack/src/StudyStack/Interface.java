@@ -17,8 +17,8 @@ public class Interface {
 	    System.out.println("| (____| |_   _  __| | ___  | (___ | |_ __ _ _ __| |/_/  ");
 	    System.out.println(" \\___|_| |_| | |/ _` |/ _ \\  \\___ \\| __/ _` | '__| '_ \\ ");
 	    System.out.println(" ____) | | |_| | (_| |  __/  ____) | || (_| | |__| |_| |");
-	    System.out.println("|_____/|_|\\__,_|\\__,_|\\  _| |_____/ \\__\\__,_|____|_| |_|");
-	    System.out.println("                                                       ");
+	    System.out.println("|_____/|_|\\__,_|\\__,_|  _| |_____/ \\__\\__,_|____|_| |_|");
+	    System.out.println("                     / /                                 ");
 	    System.out.println("                     StudyStack                        ");
 	    System.out.println();
 	}
@@ -98,6 +98,6 @@ public class Interface {
 	// exit method
 	public static void exit() {
 		System.out.println("\n***Exiting***\n");
-		scanner.close();
+		System.exit(0);
 	}
 }
