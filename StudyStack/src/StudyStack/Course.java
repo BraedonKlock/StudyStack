@@ -3,6 +3,12 @@ package StudyStack;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * This class represents a course object that can store associated homework.
+ * Each course contains an ArrayList of homework objects, allowing
+ * you to define all the homework due for a specific course.
+ */
+
 public class Course {
 	private String name;
     private String courseCode;

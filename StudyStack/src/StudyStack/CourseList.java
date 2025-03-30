@@ -8,6 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+* The CourseList class is the manager for all course-related operations in the StudyStack program.
+* It contains an arrayList of course objects and each course can contain an arrayList of homework.
+* 
+* This class allows users to:
+* - Add, edit, delete, list, and search for course
+* 
+* - it also manages each courses associated homework including:
+* 	adding, editing, and deleting individual homework and it's attributes from a course object
+* 
+* - also allows users to save and load course data from a CSV file ("courses.csv")
+* 
+* Each course contains a name, course code, a list of homework (name + due date).
+*/
+
 public class CourseList {
  static Scanner scanner = new Scanner(System.in);
 	 
