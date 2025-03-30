@@ -1,0 +1,23 @@
+package StudyStack;
+
+public class Interface {
+
+	public static void main(String[] args) {
+		System.out.println("It worked you nerd!");
+		printLogo();
+	}
+	
+	public static void printLogo() {
+	    System.out.println("  _____ _           _         _____ _             _   __  ");
+	    System.out.println(" / ____| |         | |       / ____| |           | | / /   ");
+	    System.out.println("| (___ | |_   _  __| | ___  | (___ | |_ __ _ _ __| |/_/  ");
+	    System.out.println(" \\___ \\| |w | | |/ _` |/ _ \\  \\___ \\| __/ _` | '__| '_ \\ ");
+	    System.out.println(" ____) | | |_| | (_| |  __/  ____) | || (_| | |__| |_| |");
+	    System.out.println("|_____/|_|\\__,_|\\__,_|\\  _| |_____/ \\__\\__,_|____|_| |_|");
+	    System.out.println("                                                       ");
+	    System.out.println("                     StudyStack                        ");
+	    System.out.println();
+	}
+
+
+}

@@ -6,3 +6,13 @@
 2025-03-29 23:40:20,856 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started oejs.Server@46a092ad{STARTING}[12.0.9,sto=0] @78572ms
 2025-03-29 23:40:29,177 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@46a092ad{STOPPING}[12.0.9,sto=0]
 2025-03-29 23:40:29,182 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@43c91ced{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2025-03-29 23:41:06,586 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-12.0.9; built: 2024-05-03T13:03:17.262Z; git: efe8023327e67287f9bfd006700e6a71d45b5dd6; jvm 21.0.5+11-LTS
+2025-03-29 23:41:06,640 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started oeje8n.ContextHandler$CoreContextHandler@7568ff14{/help,/help,b=null,a=AVAILABLE,h=oeje8n.ContextHandler$CoreContextHandler$CoreToNestedHandler@3a2481d4{STARTED}}
+2025-03-29 23:41:06,642 [Start Help Server] INFO  o.e.j.s.DefaultSessionIdManager - Session workerName=node0
+2025-03-29 23:41:06,672 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@5462fa4a{HTTP/1.1, (http/1.1)}{127.0.0.1:55856}
+2025-03-29 23:41:06,675 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started oejs.Server@12bfcad4{STARTING}[12.0.9,sto=0] @36720ms
+2025-03-29 23:41:07,292 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-03-29 23:41:08,625 [Worker-2: Updating Maven Dependencies] ERROR o.e.m.c.i.URLConnectionCaches - Unexpected URLConnection defaultUseCaches enabled
+2025-03-29 23:48:50,686 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@12bfcad4{STOPPING}[12.0.9,sto=0]
+2025-03-29 23:48:50,691 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@5462fa4a{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2025-03-30 00:14:51,631 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
