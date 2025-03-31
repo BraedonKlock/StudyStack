@@ -47,7 +47,7 @@ public class Course {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format(Interface.ConsoleColors.YELLOW + "%-50s\n", name + Interface.ConsoleColors.RESET));
+        sb.append(String.format(Interface.ConsoleColors.BLUE + "%-50s\n", name));
         sb.append(String.format("%s\n", courseCode + "\n"));
         sb.append(String.format("%-35s %-20s\n", "Homework", "Due Date"));
         sb.append("-----------------------------------------------\n");

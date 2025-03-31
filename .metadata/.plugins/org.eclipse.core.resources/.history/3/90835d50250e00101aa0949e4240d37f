@@ -35,8 +35,8 @@ public class Interface {
 	    System.out.println(						 " ____) | | |_| | (_| | |/ /  ____) | || (_| | |__| |_| |");
 	    System.out.println(						 "|_____/|_|\\__,_|\\__,_|\\/ /  |_____/|_| \\__,_|____|_| |_|");
 	    System.out.println(						 "                      /_/                                 ");
-	    System.out.println(						 "                                                       ");
-	    System.out.println(						 "                     StudyStack                        " + ConsoleColors.RESET);
+	    System.out.println(						  "                                                       ");
+	    System.out.println(						"                     StudyStack                        " + ConsoleColors.RESET);
 	    System.out.println();
 	}
 	
