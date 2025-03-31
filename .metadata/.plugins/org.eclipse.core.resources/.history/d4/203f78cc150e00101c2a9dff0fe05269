@@ -27,6 +27,6 @@ public class Homework {
 	
 	@Override
 	public String toString() {
-	    return String.format("%-35s %-20s", name, dueDate);
+		return name + "\nDue date: " + dueDate;
 	}
 }

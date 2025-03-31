@@ -48,8 +48,8 @@ public class Course {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("%-50s\n", name));
-        sb.append(String.format("%s\n", courseCode + "\n"));
-        sb.append(String.format("%-35s %-20s\n", "Homework", "Due Date"));
+        sb.append(String.format("%-11s: %s\n", "Course Code", courseCode + "\n"));
+        sb.append(String.format("%-25s %-20s\n", "Homework", "Due Date"));
         sb.append("-----------------------------------------------\n");
 
         for (Homework hw : homework) {

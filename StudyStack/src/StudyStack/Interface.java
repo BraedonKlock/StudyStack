@@ -91,10 +91,10 @@ public class Interface {
 			case 6: exit();
 					break;
 					
-			default: System.out.println("\n***Not a valid option***\n");
+			default: System.out.println("\n*Not a valid option*\n");
 			}
 			} catch(NumberFormatException e) {
-				System.out.println("\n***Invalid option! try again***\n");
+				System.out.println("\n*Invalid option! try again*\n");
 			}
 			option = 0;
 		} while (option != 6);
@@ -102,7 +102,7 @@ public class Interface {
 	
 	// exit method
 	public static void exit() {
-		System.out.println("\n***Exiting***\n");
+		System.out.println("\n*Exiting*\n");
 		System.exit(0);
 	}
 }

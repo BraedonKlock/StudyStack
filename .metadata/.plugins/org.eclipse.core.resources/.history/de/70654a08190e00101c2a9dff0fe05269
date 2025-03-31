@@ -67,15 +67,15 @@ public class CourseList {
         
         	// Add the course to the list
         	CourseList.add(course);
-        	System.out.println("\n*course added!*\n");
+        	System.out.println("\n***course added!***\n");
         	saveToFile();
-        	System.out.println("\n*course saved successfully!*\n");
+        	System.out.println("\n***course saved successfully!***\n");
         }
     
 	// Editing course attributes and associated homework
 	public static void editCourse() throws StudyStackException {
 	    if (CourseList.isEmpty()) {
-	        throw new StudyStackException("\n*There are no jobs to edit*\n");
+	        throw new StudyStackException("\n***There are no jobs to edit***\n");
 	    }
 
 	    listCourses();
@@ -89,12 +89,12 @@ public class CourseList {
 	            index = Integer.parseInt(scanner.nextLine());
 
 	            if (index < 0 || index >= CourseList.size()) {
-	                System.out.println("\n*Invalid input! Enter a number between 0 and " + (CourseList.size() - 1) + "*\n");// input must be within courseList size
+	                System.out.println("\n***Invalid input! Enter a number between 0 and " + (CourseList.size() - 1) + "***\n");// input must be within courseList size
 	            } else {
 	                break;
 	            }
 	        } catch (NumberFormatException e) {
-	            System.out.println("\n*Invalid input! Please enter a valid number*\n"); //catches letters
+	            System.out.println("\n***Invalid input! Please enter a valid number***\n"); //catches letters
 	        }
 	    }
 	    
@@ -132,12 +132,12 @@ public class CourseList {
 	                    List<Homework> homework = course.getHomework();
 
 	                    if (homework.isEmpty()) {
-	                        System.out.println("\n*There is no homework to edit*\n");
+	                        System.out.println("\n***There is no homework to edit***\n");
 	                        continue;
 	                    }
 	                    
 	                    // Lists homework for users chosen course
-	                    System.out.println("\n*Homework for this course*");
+	                    System.out.println("\n***Homework for this course***");
 	                    for (int i = 0; i < homework.size(); i++) {
 	                        Homework work = homework.get(i);
 	                        System.out.println(i + ". Name: " + work.getName() + " | Due date: " + work.getDueDate());
@@ -151,12 +151,12 @@ public class CourseList {
 	                            homeworkNumber = Integer.parseInt(scanner.nextLine());
 
 	                            if (homeworkNumber < 0 || homeworkNumber >= homework.size()) {
-	                                System.out.println("\n*Invalid homework number! Try again*\n");
+	                                System.out.println("\n***Invalid homework number! Try again***\n");
 	                            } else {
 	                                break;
 	                            }
 	                        } catch (NumberFormatException e) {
-	                            System.out.println("\n*Please enter a valid number*\n");
+	                            System.out.println("\n***Please enter a valid number***\n");
 	                        }
 	                    }
 	                    
@@ -175,7 +175,7 @@ public class CourseList {
 	                    String newDueDate = scanner.nextLine();
 	                    if (!newDueDate.isEmpty()) {
                         	selectedHomework.setDueDate(newDueDate);
-                            System.out.println("\n*Homework updated*\n");     
+                            System.out.println("\n***Homework updated***\n");     
 	                    }
 	                    
 	                    //Adding homework to users chosen course
@@ -195,7 +195,7 @@ public class CourseList {
 	                    List<Homework> homework = course.getHomework();
 
 	                    if (homework.isEmpty()) {
-	                        System.out.println("\n*There is no homework to delete*\n");
+	                        System.out.println("\n***There is no homework to delete***\n");
 	                        continue;
 	                    }
 
@@ -210,12 +210,12 @@ public class CourseList {
 	                        try {
 	                            deleteIndex = Integer.parseInt(scanner.nextLine());
 	                            if (deleteIndex < 0 || deleteIndex >= homework.size()) { //Users input must be within homework.size
-	                                System.out.println("\n*Invalid homework number*\n");
+	                                System.out.println("\n***Invalid homework number***\n");
 	                            } else {
 	                                break;
 	                            }
 	                        } catch (NumberFormatException e) {
-	                            System.out.println("\n*Please enter a valid number*\n");
+	                            System.out.println("\n***Please enter a valid number***\n");
 	                        }
 	                    }
 	                    
@@ -223,21 +223,21 @@ public class CourseList {
 	                    Homework removedHw = homework.remove(deleteIndex);
 	                    System.out.println("\nDeleted homework: " + removedHw.getName());
 	                } else {
-	                    System.out.println("\n*Invalid input. Please enter Add, Edit, Delete, or type \"2\" to exit*\n");
+	                    System.out.println("\n***Invalid input. Please enter Add, Edit, Delete, or type \"2\" to exit***\n");
 	                }
 	            }
 	        } else {
-	            System.out.println("\n*Invalid input! Please enter '1 = yes' or '2 = no'*\n");
+	            System.out.println("\n***Invalid input! Please enter '1 = yes' or '2 = no'***\n");
 	        }
 	    }
 	    saveToFile();
-	    System.out.println("\n*Course updated successfully*\n");
+	    System.out.println("\n***Course updated successfully***\n");
 	}
 	
 		// Delete course method
 	    public static void deleteCourse() throws Exception {
 	        if (CourseList.isEmpty()) {
-	            throw new Exception("\n*There are no courses to delete*\n"); // Handles empty courseList
+	            throw new Exception("\n***There are no courses to delete***\n"); // Handles empty courseList
 	        }
 
 	        listCourses(); 
@@ -257,18 +257,18 @@ public class CourseList {
 	                index = Integer.parseInt(input);
 
 	                if (index < 0 || index >= CourseList.size()) {
-	                    System.out.println("\n*Invalid course number! Please enter a number between 0 and " + (CourseList.size() - 1) + "*\n"); // Users input must be within CourseList size
+	                    System.out.println("\n***Invalid course number! Please enter a number between 0 and " + (CourseList.size() - 1) + "***\n"); // Users input must be within CourseList size
 	                } else {
 	                    break;
 	                }
 	            } catch (NumberFormatException e) {
-	                System.out.println("\n*Invalid input! Please enter a valid number*\n");// Catches the input of letters
+	                System.out.println("\n***Invalid input! Please enter a valid number***\n");// Catches the input of letters
 	            }
 	        }
 	        
 	        // Confirm deletion. While loop controls user input
 	        while(true) {
-		        System.out.println("\n*Are you sure you want to delete this course? type 1 = \"yes\" or 2 = \"no\":\n" + CourseList.get(index) + "*\n");
+		        System.out.println("\n***are you sure you want to delete this course? type 1 = \"yes\" or 2 = \"no\":\n" + CourseList.get(index) + "***\n");
 		        int confirm = scanner.nextInt();
 		        try {
 		        if (confirm == 1) {
@@ -281,11 +281,11 @@ public class CourseList {
 		        	return;
 		        }
 		        else {
-		        	System.out.println("\n*Invalid input enter 1 for\"yes\" or 2 for\"no\"*\n");
+		        	System.out.println("\n***Invalid input enter 1 for\"yes\" or 2 for\"no\"***\n");
 		        }
 		        
 		        } catch (NumberFormatException e) {
-		        	System.out.println("\n*Invalid input enter 1 for \"yes\" or 2 for\"no\"*\n");
+		        	System.out.println("\n***Invalid input enter 1 for \"yes\" or 2 for\"no\"***\n");
 		        }
 	        }
 	    }
@@ -293,7 +293,7 @@ public class CourseList {
 	    // Search course method
 	    public static void searchCourse() throws StudyStackException {
 	    	if (CourseList.isEmpty()) {
-	            throw new StudyStackException("\n*No jobs to search*\n"); // handling empty CourseList
+	            throw new StudyStackException("\n***No jobs to search***\n"); // handling empty CourseList
 	        }
 
 	        System.out.println("\nEnter any keyword to search (course name, description, or tool name) or type \"2\" to exit:");
@@ -303,7 +303,7 @@ public class CourseList {
 	        // using a boolean value to control flow.
 	        boolean found = false;
 
-	        System.out.println("\nSearch Results:\n");
+	        System.out.println("\nSearch Results:");
 	        for (int i = 0; i < CourseList.size(); i++) {
 	            Course course = CourseList.get(i);
 	            String courseName = course.getName().toLowerCase();
@@ -316,13 +316,13 @@ public class CourseList {
 
 	            // Match user input against all three fields course name, course code and homework
 	            if (courseName.contains(term) || courseCode.contains(term) || homeworkNames.toString().contains(term)) {
-	                System.out.println("~ COURSE # " + i + "\n" + course + "\n\n\n\n");
+	                System.out.println("~ COURSE # " + i + "\n" + course + "\n");
 	                found = true; // found set to true so that the next if statement doesn't execute
 	            }
 	        }
 
 	        if (!found) {
-	            System.out.println("\n*No course found matching \"" + term + "\"*\n");
+	            System.out.println("\n***No course found matching \"" + term + "\"***\n");
 	        }
 	    }
 	    
@@ -350,16 +350,16 @@ public class CourseList {
 	                CourseList.add(course); // Add course to courseList array
 	            }
 
-	            System.out.println("\n*courses loaded from file*\n");
+	            System.out.println("\n***courses loaded from file***\n");
 	        } catch (IOException e) {
-	            System.out.println("\n*Error loading file: " + e.getMessage() + "*\n"); // Handle read error
+	            System.out.println("\n***Error loading file: " + e.getMessage() + "***\n"); // Handle read error
 	        }
 	    }
 	    
 	    
 	    public static void listCourses() throws StudyStackException {
 	        if (CourseList.isEmpty()) {
-	            throw new StudyStackException("\n*No courses found*\n");
+	            throw new StudyStackException("\n***No courses found***\n");
 	        }
 
 	        for (int i = 0; i < CourseList.size(); i++) {
@@ -390,9 +390,9 @@ public class CourseList {
 	                writer.write(line.toString() + "\n");
 	            }
 
-	            System.out.println("\n*Courses saved to file*\n");
+	            System.out.println("\n***Courses saved to file***\n");
 	        } catch (IOException e) {
-	            System.out.println("\n*Error saving file: " + e.getMessage() + "*\n"); // Catching error saving file
+	            System.out.println("\n***Error saving file: " + e.getMessage() + "***\n"); // Catching error saving file
 	        }
 	    }
 }
