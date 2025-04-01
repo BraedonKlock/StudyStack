@@ -36,7 +36,6 @@ public class ScheduleInterface {
 					
 			case 3: TaskManager.deleteTask();
 					break;
-					
 			case 4: TaskManager.clearSchedule();
 					break;
 					

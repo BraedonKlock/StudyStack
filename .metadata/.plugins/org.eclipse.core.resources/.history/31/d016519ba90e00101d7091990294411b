@@ -36,8 +36,11 @@ public class ScheduleInterface {
 					
 			case 3: TaskManager.deleteTask();
 					break;
-					
+					try {
 			case 4: TaskManager.clearSchedule();
+					} catch (StudyStackException e){
+						System.out.println(e.getMessage());
+						}
 					break;
 					
 			case 5: exit();

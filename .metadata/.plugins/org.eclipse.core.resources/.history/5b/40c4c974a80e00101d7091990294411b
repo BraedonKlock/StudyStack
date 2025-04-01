@@ -13,8 +13,7 @@ public class ScheduleInterface {
 		  		   "1. Add task\n" +
 		  		   "2. Edit course\n" +
 		  		   "3. Delete\n" +
-		  		   "4. Clear schedule\n" +
-		  		   "5. Exit\n" +
+		  		   "4. Exit\n" +
 		  		   "Choose an option (enter #): ");
 	}
 
@@ -37,10 +36,7 @@ public class ScheduleInterface {
 			case 3: TaskManager.deleteTask();
 					break;
 					
-			case 4: TaskManager.clearSchedule();
-					break;
-					
-			case 5: exit();
+			case 4: exit();
 					break;
 					
 			default: System.out.println("\n*Not a valid option*\n");
@@ -49,7 +45,7 @@ public class ScheduleInterface {
 				System.out.println("\n*Invalid option! try again*\n");
 			}
 			option = 0;
-		} while (option != 5);
+		} while (option != 7);
 	}
 
 	// exit method

@@ -13,8 +13,7 @@ public class ScheduleInterface {
 		  		   "1. Add task\n" +
 		  		   "2. Edit course\n" +
 		  		   "3. Delete\n" +
-		  		   "4. Clear schedule\n" +
-		  		   "5. Exit\n" +
+		  		   "4. Exit\n" +
 		  		   "Choose an option (enter #): ");
 	}
 
@@ -36,7 +35,6 @@ public class ScheduleInterface {
 					
 			case 3: TaskManager.deleteTask();
 					break;
-					
 			case 4: TaskManager.clearSchedule();
 					break;
 					

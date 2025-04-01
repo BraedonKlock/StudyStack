@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -141,10 +140,9 @@ public class TaskManager {
     		System.out.println("\n*Enter a valid number(1 = YES | 2 = N0)*\n");
     		}
     	}
-    	}  catch (InputMismatchException e) {
-            scanner.nextLine(); // Clear the bad input
-            throw new StudyStackException("\n*Enter a valid number(1 = YES | 2 = NO)*\n");
-        }
+    	} catch(NumberFormatException e) {
+    		throw new StudyStackException("\\n*Enter a valid number(1 = YES | 2 = N0)*\\n");
+    	}
     }
 
     public static void saveTask() {
