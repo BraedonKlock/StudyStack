@@ -11,8 +11,8 @@ public class ScheduleInterface {
 						   "|------- Task Menu -------|\n" +
 						   "|=========================|\n" +
 		  		   "1. Add task\n" +
-		  		   "2. Edit schedule\n" +
-		  		   "3. Delete task\n" +
+		  		   "2. Edit course\n" +
+		  		   "3. Delete\n" +
 		  		   "4. Clear schedule\n" +
 		  		   "5. Exit\n" +
 		  		   "Choose an option (enter #): ");
