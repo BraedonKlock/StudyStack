@@ -25,78 +25,31 @@ public class TaskManager {
     }
 
     public static void addTask() {
-	    System.out.println("Enter the name of the task or type \"2\" to exit:");
-	    String taskName = scanner.nextLine().trim();
-	    if (taskName.equals("2")) return;
+        System.out.println("Enter the name of the task:");
+        String taskName = scanner.nextLine();
 
-	    System.out.println("Which day of the week do you want to add it to? or type \"2\" to exit:");
-	    String dayInput = scanner.nextLine().trim();
-	    if (dayInput.equals("2")) return;
-
-	    DayOfWeek day = weekDays.get(capitalize(dayInput));
-	    if (day == null) {
-	        System.out.println("\n*Invalid day entered*\n");
-	        return;
-	    }
-
-	    day.addTask(new Task(taskName));
-	    System.out.println("\n*Task added to " + day.getName() +"*\n");
-	    saveTask();
-	}
-
-
-	public static void editTask() {
-	    System.out.println("Which day do you want to edit a task on? (or type \"2\" to exit):");
-	    String dayInput = scanner.nextLine().trim();
-	    if (dayInput.equals("2")) return;
-
-	    DayOfWeek day = weekDays.get(capitalize(dayInput));
-	    if (day == null) {
-	        System.out.println("\n*Invalid day entered*\n");
-	        return;
-	    }
-
-	    List<Task> tasks = day.getTasks();
-	    if (tasks.isEmpty()) {
-	        System.out.println("\n*No tasks to edit on " + day.getName() + "*\n");
-	        return;
-	    }
-
-	    for (int i = 0; i < tasks.size(); i++) {
-	        System.out.println(i + ": " + tasks.get(i).getName());
-	    }
-	    System.out.println("Enter the number of the task to edit or type \"Exit:\"");
-	    String input = scanner.nextLine().trim();
-
-	    if (input.equalsIgnoreCase("Exit")) return;
-
-	    int index;
-	    try {
-	        index = Integer.parseInt(input);
-	    } catch (NumberFormatException e) {
-	        System.out.println("\n*Invalid number. Please enter a valid task number*\n");
-	        return;
-	    }
-	    System.out.println("Enter the new task name or type \"2\" to exit:");
-	    String newName = scanner.nextLine();
-	    if (newName.equals("2")) return;
-
-	    day.editTask(index, newName);
-	    System.out.println("\n*Task updated*\n");
-	    saveTask();
-	}
-
-
-    public static void deleteTask() {
-        System.out.println("Which day do you want to delete a task from? Or type \"2\" to exit:");
+        System.out.println("Which day of the week do you want to add it to?:");
         String day = scanner.nextLine();
-	    if (day.equals("2")) return;
+
+        DayOfWeek d = weekDays.get(capitalize(day));
+        if (d != null) {
+            d.addTask(new Task(taskName));
+            System.out.println("Task added to " + d.getName());
+        } else {
+            System.out.println("Invalid day entered.");
+        }
+        saveTask();
+    }
+
+    public static void editTask() {
+        System.out.println("Which day do you want to edit a task on?:");
+        String day = scanner.nextLine();
 
         DayOfWeek d = weekDays.get(capitalize(day));
         if (d != null) {
             List<Task> tasks = d.getTasks();
             if (tasks.isEmpty()) {
-                System.out.println("\n*No tasks to delete on " + d.getName() + "*\n");
+                System.out.println("No tasks to edit on " + d.getName());
                 return;
             }
 
@@ -104,22 +57,42 @@ public class TaskManager {
                 System.out.println(i + ": " + tasks.get(i).getName());
             }
 
-            System.out.println("Enter the number of the task to delete or type \"2\" to exit:");
-            String input = scanner.nextLine().trim();
+            System.out.println("Enter the number of the task to edit:");
+            int index = Integer.parseInt(scanner.nextLine());
 
-            if (input.equals("2")) return;
+            System.out.println("Enter the new task name:");
+            String newName = scanner.nextLine();
 
-            int index;
-            try {
-                index = Integer.parseInt(input);
-            } catch (NumberFormatException e) {
-                System.out.println("\n*Invalid number. Please enter a valid task number*\n");
+            d.editTask(index, newName);
+            System.out.println("Task updated.");
+        } else {
+            System.out.println("Invalid day entered.");
+        }
+    }
+
+    public static void deleteTask() {
+        System.out.println("Which day do you want to delete a task from?:");
+        String day = scanner.nextLine();
+
+        DayOfWeek d = weekDays.get(capitalize(day));
+        if (d != null) {
+            List<Task> tasks = d.getTasks();
+            if (tasks.isEmpty()) {
+                System.out.println("No tasks to delete on " + d.getName());
                 return;
             }
+
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.println(i + ": " + tasks.get(i).getName());
+            }
+
+            System.out.println("Enter the number of the task to delete:");
+            int index = Integer.parseInt(scanner.nextLine());
+
             d.deleteTask(index);
-            System.out.println("\n*Task deleted*\n");
+            System.out.println("Task deleted.");
         } else {
-            System.out.println("\n*Invalid day entered*\n");
+            System.out.println("Invalid day entered.");
         }
     }
 
@@ -164,8 +137,10 @@ public class TaskManager {
                         weekdays.addTask(new Task(taskName.trim()));
                     }
                 }
+
                 weekDays.put(dayName, weekdays);
             }
+
             System.out.println("\n*Courses loaded from file*\n");
         } catch (IOException e) {
             System.out.println("\n*Error loading file: " + e.getMessage() + "*\n");
@@ -181,15 +156,15 @@ public class TaskManager {
         String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
         int columnWidth = 17;
 
-        String divider = Interface.ConsoleColors.YELLOW + "+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+" + Interface.ConsoleColors.RESET;
+        String divider = "+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+";
 
         System.out.println(divider);
 
         // Print centered day names
         for (String dayName : days) {
-            System.out.print(Interface.ConsoleColors.YELLOW + "| " + centerText(dayName, columnWidth - 2) + " ");
+            System.out.print("| " + centerText(dayName, columnWidth - 2) + " ");
         }
-        System.out.println(Interface.ConsoleColors.YELLOW + "|" + Interface.ConsoleColors.RESET);
+        System.out.println("|");
         System.out.println(divider);
 
         // Print centered task names
@@ -200,7 +175,7 @@ public class TaskManager {
                 if (i < day.getTasks().size()) {
                     taskName = day.getTasks().get(i).getName();
                 }
-                System.out.print(Interface.ConsoleColors.YELLOW +"| " + centerText(taskName, columnWidth - 2) + " ");
+                System.out.print("| " + centerText(taskName, columnWidth - 2) + " ");
             }
             System.out.println("|");
         }
@@ -216,6 +191,7 @@ public class TaskManager {
 
         return " ".repeat(paddingLeft) + text + " ".repeat(paddingRight);
     }
+
 
     private static String capitalize(String input) {
         if (input == null || input.isEmpty()) return input;

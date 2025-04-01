@@ -35,12 +35,12 @@ public class TaskManager {
 
 	    DayOfWeek day = weekDays.get(capitalize(dayInput));
 	    if (day == null) {
-	        System.out.println("\n*Invalid day entered*\n");
+	        System.out.println("Invalid day entered.");
 	        return;
 	    }
 
 	    day.addTask(new Task(taskName));
-	    System.out.println("\n*Task added to " + day.getName() +"*\n");
+	    System.out.println("Task added to " + day.getName());
 	    saveTask();
 	}
 
@@ -52,20 +52,20 @@ public class TaskManager {
 
 	    DayOfWeek day = weekDays.get(capitalize(dayInput));
 	    if (day == null) {
-	        System.out.println("\n*Invalid day entered*\n");
+	        System.out.println("Invalid day entered.");
 	        return;
 	    }
 
 	    List<Task> tasks = day.getTasks();
 	    if (tasks.isEmpty()) {
-	        System.out.println("\n*No tasks to edit on " + day.getName() + "*\n");
+	        System.out.println("No tasks to edit on " + day.getName());
 	        return;
 	    }
 
 	    for (int i = 0; i < tasks.size(); i++) {
 	        System.out.println(i + ": " + tasks.get(i).getName());
 	    }
-	    System.out.println("Enter the number of the task to edit or type \"Exit:\"");
+	    System.out.println("Enter the number of the task to edit or type \"Exit\" to exit:");
 	    String input = scanner.nextLine().trim();
 
 	    if (input.equalsIgnoreCase("Exit")) return;
@@ -74,7 +74,7 @@ public class TaskManager {
 	    try {
 	        index = Integer.parseInt(input);
 	    } catch (NumberFormatException e) {
-	        System.out.println("\n*Invalid number. Please enter a valid task number*\n");
+	        System.out.println("Invalid number. Please enter a valid task number.");
 	        return;
 	    }
 	    System.out.println("Enter the new task name or type \"2\" to exit:");
@@ -82,7 +82,7 @@ public class TaskManager {
 	    if (newName.equals("2")) return;
 
 	    day.editTask(index, newName);
-	    System.out.println("\n*Task updated*\n");
+	    System.out.println("Task updated.");
 	    saveTask();
 	}
 
@@ -96,7 +96,7 @@ public class TaskManager {
         if (d != null) {
             List<Task> tasks = d.getTasks();
             if (tasks.isEmpty()) {
-                System.out.println("\n*No tasks to delete on " + d.getName() + "*\n");
+                System.out.println("No tasks to delete on " + d.getName());
                 return;
             }
 
@@ -113,13 +113,13 @@ public class TaskManager {
             try {
                 index = Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                System.out.println("\n*Invalid number. Please enter a valid task number*\n");
+                System.out.println("Invalid number. Please enter a valid task number.");
                 return;
             }
             d.deleteTask(index);
-            System.out.println("\n*Task deleted*\n");
+            System.out.println("Task deleted.");
         } else {
-            System.out.println("\n*Invalid day entered*\n");
+            System.out.println("Invalid day entered.");
         }
     }
 
@@ -181,15 +181,15 @@ public class TaskManager {
         String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
         int columnWidth = 17;
 
-        String divider = Interface.ConsoleColors.YELLOW + "+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+" + Interface.ConsoleColors.RESET;
+        String divider = Interface.ConsoleColors.GREEN + "+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+" + Interface.ConsoleColors.RESET;
 
         System.out.println(divider);
 
         // Print centered day names
         for (String dayName : days) {
-            System.out.print(Interface.ConsoleColors.YELLOW + "| " + centerText(dayName, columnWidth - 2) + " ");
+            System.out.print(Interface.ConsoleColors.GREEN + "| " + centerText(dayName, columnWidth - 2) + " ");
         }
-        System.out.println(Interface.ConsoleColors.YELLOW + "|" + Interface.ConsoleColors.RESET);
+        System.out.println(Interface.ConsoleColors.GREEN + "|" + Interface.ConsoleColors.RESET);
         System.out.println(divider);
 
         // Print centered task names
