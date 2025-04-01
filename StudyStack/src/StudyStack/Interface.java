@@ -1,5 +1,7 @@
 package StudyStack;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /*
@@ -26,6 +28,18 @@ public class Interface {
 	        public static final String WHITE = "\u001B[37m";
 	    }
 	 
+
+	 public static void DateTime() {
+	         LocalDateTime now = LocalDateTime.now(); // Get current date and time
+
+	         // Format the date and time
+	         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd|HH:mm:ss");
+
+	         String formattedDateTime = now.format(formatter);
+	         System.out.printf("%-3s %s","",formattedDateTime+"\n");
+	     }
+
+	 
 	// Logo
 	public static void printLogo() {
 	    System.out.println(ConsoleColors.GREEN + "  _____ _           _         _____ _             _   __  ");
@@ -50,7 +64,8 @@ public class Interface {
 				  		   "3. Delete course\n" +
 				  		   "4. Search course\n" +
 				  		   "5. List all courses\n" +
-				  		   "6. Exit\n" +
+				  		   "6. Weekly schedule\n" +
+				  		   "7. Exit\n" +
 				  		   "Choose an option (enter #): ");
 	}
 	
@@ -62,6 +77,7 @@ public class Interface {
 			try {
 				CourseList.loadFromFile();
 			printLogo();
+			DateTime();
 			courseShowMenu();
 			option = Integer.parseInt(scanner.nextLine().trim());
 			switch (option) {
@@ -99,8 +115,14 @@ public class Interface {
 						System.out.println(e.getMessage());
 					}
 					break;
+			case 6: try {
+					ScheduleInterface.Menu();
+					} catch (StudyStackException e){
+					System.out.println(e.getMessage());
+					}
+					break;
 					
-			case 6: exit();
+			case 7: exit();
 					break;
 					
 			default: System.out.println("\n*Not a valid option*\n");
@@ -109,7 +131,7 @@ public class Interface {
 				System.out.println("\n*Invalid option! try again*\n");
 			}
 			option = 0;
-		} while (option != 6);
+		} while (option != 7);
 	}
 	
 	// exit method

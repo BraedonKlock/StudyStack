@@ -1,0 +1,16 @@
+package StudyStack;
+
+public class TaskManager {
+ 
+	public static void addTask() {
+		
+	}
+
+	public static void editTask() {
+		
+	}
+
+	public static void deleteTask() {
+		
+	}
+}

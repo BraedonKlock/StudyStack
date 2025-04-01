@@ -1,0 +1,134 @@
+package StudyStack;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class TaskManager {
+	
+	static List<DayOfWeek> weekDays = new ArrayList<>(Arrays.asList(
+			new DayOfWeek("Monday"),
+			new DayOfWeek("Tuesday"),
+			new DayOfWeek("Wednesday"),
+			new DayOfWeek("Thursday"),
+			new DayOfWeek("Friday"),
+			new DayOfWeek("Saturday"),
+			new DayOfWeek("Sunday")
+			));
+	
+	static Scanner scanner = new Scanner(System.in);
+	public static void addTask() {
+        System.out.println("Enter the name of the task:");
+        String taskName = scanner.nextLine();
+
+        System.out.println("Which day of the week do you want to add it to?:");
+        String day = scanner.nextLine();
+
+        for (DayOfWeek d : weekDays) {
+            if (d.getName().equalsIgnoreCase(day)) {
+                d.addTask(taskName);
+                System.out.println("Task added to " + d.getName());
+                return;
+            }
+        }
+
+        System.out.println("Invalid day entered.");
+    }
+	public static void editTask() {
+	 System.out.println("Which day do you want to edit a task on?:");
+        String day = scanner.nextLine();
+
+        for (DayOfWeek d : weekDays) {
+            if (d.getName().equalsIgnoreCase(day)) {
+                List<Task> tasks = d.getTasks();
+                if (tasks.isEmpty()) {
+                    System.out.println("No tasks to edit on " + d.getName());
+                    return;
+                }
+
+                for (int i = 0; i < tasks.size(); i++) {
+                    System.out.println(i + ": " + tasks.get(i).getName());
+                }
+
+                System.out.println("Enter the number of the task to edit:");
+                int index = Integer.parseInt(scanner.nextLine());
+
+                System.out.println("Enter the new task name:");
+                String newName = scanner.nextLine();
+
+                d.editTask(index, newName);
+                System.out.println("Task updated.");
+                return;
+            }
+        }
+
+        System.out.println("Invalid day entered.");
+    }
+
+	public static void deleteTask() {
+       System.out.println("Which day do you want to delete a task from?:");
+        String day = scanner.nextLine();
+
+        for (DayOfWeek d : weekDays) {
+            if (d.getName().equalsIgnoreCase(day)) {
+                List<Task> tasks = d.getTasks();
+                if (tasks.isEmpty()) {
+                    System.out.println("No tasks to delete on " + d.getName());
+                    return;
+                }
+
+                for (int i = 0; i < tasks.size(); i++) {
+                    System.out.println(i + ": " + tasks.get(i).getName());
+                }
+
+                System.out.println("Enter the number of the task to delete:");
+                int index = Integer.parseInt(scanner.nextLine());
+
+                d.deleteTask(index);
+                System.out.println("Task deleted.");
+                return;
+            }
+        }
+
+        System.out.println("Invalid day entered.");
+    }
+		
+	
+	public static void saveTask() {
+		
+	}
+	public static void loadTask() {
+		
+	}
+	
+	public static void displaySchedule() {
+	 int maxTasks = 0;
+	    for (DayOfWeek day : weekDays) {
+	        maxTasks = Math.max(maxTasks, day.getTasks().size());
+	    }
+
+	    // Print header
+	    System.out.println("+------------+------------+------------+------------+------------+------------+------------+");
+	    for (DayOfWeek day : weekDays) {
+	        System.out.printf("| %-10s", day.getName());
+	    }
+	    System.out.println("|");
+	    System.out.println("+------------+------------+------------+------------+------------+------------+------------+");
+
+	    // Print tasks row by row
+	    for (int i = 0; i < maxTasks; i++) {
+	        for (DayOfWeek day : weekDays) {
+	            String taskName = "";
+	            if (i < day.getTasks().size()) {
+	                taskName = day.getTasks().get(i).getName(); // Get task name from Task object
+	            }
+	            System.out.printf("| %-12s", taskName.length() > 10 ? taskName.substring(0, 9) + "…" : taskName);
+	        }
+	        System.out.println("|");
+	    }
+
+	    System.out.println("+------------+------------+------------+------------+------------+------------+------------+");
+	}
+}
+

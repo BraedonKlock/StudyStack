@@ -1,0 +1,22 @@
+package StudyStack;
+
+import java.util.Scanner;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class TaskManager {
+ 
+	public static void addTask() {
+		
+	}
+
+	public static void editTask() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void deleteTask() {
+		// TODO Auto-generated method stub
+		
+	}
+}
