@@ -118,8 +118,8 @@ public class TaskManager {
                 return;
             }
             d.deleteTask(index);
-            System.out.println("\n*Task deleted*\n");
             saveTask();
+            System.out.println("\n*Task deleted*\n");
         } else {
             System.out.println("\n*Invalid day entered*\n");
         }
