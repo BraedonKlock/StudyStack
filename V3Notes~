@@ -1,0 +1,17 @@
+Program
+
+notes are not attached to courses because i want to be able to delete courses but keep notes.
+everytime a course is added it creates a notes folder and a vim CourseInfo file.
+Notes are printed in color 
+
+user can "create note"
+- Program asks which course its for, then asks for file name it then opens vim while passing file name as an argument and saves it to corresponding
+ course
+
+user can "Edit note"
+
+user can Delete note"
+
+user can view note
+- Program lists courses and asks which course. Program then lists notes to view
+
