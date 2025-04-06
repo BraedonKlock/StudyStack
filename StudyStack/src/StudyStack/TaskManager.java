@@ -83,7 +83,6 @@ public class TaskManager {
 	    if (newName.equals("2")) return;
 
 	    day.editTask(index, newName);
-	    System.out.println("\n*Task updated*\n");
 	    saveTask();
 	}
 
@@ -164,8 +163,6 @@ public class TaskManager {
                 }
                 writer.write(line.toString() + "\n");
             }
-
-            System.out.println("\n*Courses saved to file*\n");
         } catch (IOException e) {
             System.out.println("\n*Error saving file: " + e.getMessage() + "*\n");
         }
@@ -191,7 +188,6 @@ public class TaskManager {
                 }
                 weekDays.put(dayName, weekdays);
             }
-            System.out.println("\n*Courses loaded from file*\n");
         } catch (IOException e) {
             System.out.println("\n*Error loading file: " + e.getMessage() + "*\n");
         }

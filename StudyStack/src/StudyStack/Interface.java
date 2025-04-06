@@ -11,7 +11,7 @@ import java.util.*;
 public class Interface {
 
 	public static void main(String[] args) throws Exception {
-        courseMenu();
+        mainMenu();
 	}
 	
 	static Scanner scanner = new Scanner(System.in);
@@ -38,6 +38,62 @@ public class Interface {
 	         String formattedDateTime = now.format(formatter);
 	         System.out.printf("%-3s %s","",formattedDateTime+"\n");
 	     }
+	 
+	 public static void showMainMenu() {
+		System.out.println("|=========================|\n" + 
+		  		   "|------- Main Menu -------|\n" +
+		  		   "|=========================|\n" +
+		  		   "1. Courses\n" +
+		  		   "2. Weekly schedule\n" +
+		  		   "3. Notes\n" +
+		  		   "4. Exit\n" +
+		  		   "Choose an option (enter #): ");
+		 
+	 }
+	 
+	public static void mainMenu() throws Exception {
+		int option = 0;
+		
+		do {
+			try {
+			CourseList.loadFromFile();
+			printLogo();
+			DateTime();
+			showMainMenu();
+			option = Integer.parseInt(scanner.nextLine().trim());
+			switch (option) {
+			case 1: try {
+					courseMenu();
+					} catch (StudyStackException e){
+						System.out.println(e.getMessage());
+					}
+					break;
+					
+			case 2: try {
+					ScheduleInterface.Menu();
+					} catch (StudyStackException e){
+					System.out.println(e.getMessage());
+					}
+					break;
+					
+			case 3: try {
+					NotesMenu.notesMenu();
+					} catch (StudyStackException e){
+					System.out.println(e.getMessage());
+					}
+					break;
+					
+			case 4: exit();
+					break;
+					
+			default: System.out.println("\n*Not a valid option*\n");
+			}
+			} catch(NumberFormatException e) {
+				System.out.println("\n*Invalid option! try again*\n");
+			}
+			option = 0;
+		} while (option != 4);
+	}
 
 	 
 	// Logo
@@ -64,8 +120,7 @@ public class Interface {
 				  		   "3. Delete course\n" +
 				  		   "4. Search course\n" +
 				  		   "5. List all courses\n" +
-				  		   "6. Weekly schedule\n" +
-				  		   "7. Exit\n" +
+				  		   "6. Exit\n" +
 				  		   "Choose an option (enter #): ");
 	}
 	
@@ -75,7 +130,7 @@ public class Interface {
 		
 		do {
 			try {
-				CourseList.loadFromFile();
+			CourseList.loadFromFile();
 			printLogo();
 			DateTime();
 			courseShowMenu();
@@ -115,14 +170,8 @@ public class Interface {
 						System.out.println(e.getMessage());
 					}
 					break;
-			case 6: try {
-					ScheduleInterface.Menu();
-					} catch (StudyStackException e){
-					System.out.println(e.getMessage());
-					}
-					break;
 					
-			case 7: exit();
+			case 6: mainMenu();
 					break;
 					
 			default: System.out.println("\n*Not a valid option*\n");
@@ -131,7 +180,7 @@ public class Interface {
 				System.out.println("\n*Invalid option! try again*\n");
 			}
 			option = 0;
-		} while (option != 7);
+		} while (option != 6);
 	}
 	
 	// exit method

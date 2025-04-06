@@ -18,12 +18,13 @@ public class ScheduleInterface {
 		  		   "Choose an option (enter #): ");
 	}
 
-	public static void Menu() throws StudyStackException {
+	public static void Menu() throws Exception {
 		int option = 0;
 		
 		do {
 			try {
 			TaskManager.loadTaskFromFile();
+			Interface.printLogo();
 			TaskManager.displaySchedule();
 			ShowMenu();
 			option = Integer.parseInt(scanner.nextLine().trim());
@@ -40,7 +41,7 @@ public class ScheduleInterface {
 			case 4: TaskManager.clearSchedule();
 					break;
 					
-			case 5: exit();
+			case 5: Interface.mainMenu();
 					break;
 					
 			default: System.out.println("\n*Not a valid option*\n");
@@ -50,15 +51,5 @@ public class ScheduleInterface {
 			}
 			option = 0;
 		} while (option != 5);
-	}
-
-	// exit method
-	public static void exit() {
-		try {
-			Interface.courseMenu();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

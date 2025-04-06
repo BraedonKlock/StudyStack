@@ -69,7 +69,6 @@ public class CourseList {
         	CourseList.add(course);
         	System.out.println("\n*course added!*\n");
         	saveToFile();
-        	System.out.println("\n*course saved successfully!*\n");
         }
     
 	// Editing course attributes and associated homework
@@ -231,7 +230,6 @@ public class CourseList {
 	        }
 	    }
 	    saveToFile();
-	    System.out.println("\n*Course updated successfully*\n");
 	}
 	
 		// Delete course method
@@ -349,8 +347,6 @@ public class CourseList {
 	                }
 	                CourseList.add(course); // Add course to courseList array
 	            }
-
-	            System.out.println("\n*courses loaded from file*\n");
 	        } catch (IOException e) {
 	            System.out.println("\n*Error loading file: " + e.getMessage() + "*\n"); // Handle read error
 	        }
@@ -389,8 +385,6 @@ public class CourseList {
 	                }
 	                writer.write(line.toString() + "\n");
 	            }
-
-	            System.out.println("\n*Courses saved to file*\n");
 	        } catch (IOException e) {
 	            System.out.println("\n*Error saving file: " + e.getMessage() + "*\n"); // Catching error saving file
 	        }
