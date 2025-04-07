@@ -1,7 +1,0 @@
-package StudyStack;
-
-public class StudyStackException {
-	public  StudyStackException(String message) {
-		System.err.println("Exception: " + message);
-	}
-}

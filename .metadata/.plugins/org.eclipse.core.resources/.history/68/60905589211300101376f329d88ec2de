@@ -14,6 +14,16 @@ public class TaskManager {
 
     static Map<String, DayOfWeek> weekDays = new HashMap<>();
     static Scanner scanner = new Scanner(System.in);
+
+    static {
+        weekDays.put("Monday", new DayOfWeek("Monday"));
+        weekDays.put("Tuesday", new DayOfWeek("Tuesday"));
+        weekDays.put("Wednesday", new DayOfWeek("Wednesday"));
+        weekDays.put("Thursday", new DayOfWeek("Thursday"));
+        weekDays.put("Friday", new DayOfWeek("Friday"));
+        weekDays.put("Saturday", new DayOfWeek("Saturday"));
+        weekDays.put("Sunday", new DayOfWeek("Sunday"));
+    }
     
     private static void initializeWeekDays() {
         weekDays.put("Monday", new DayOfWeek("Monday"));

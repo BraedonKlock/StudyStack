@@ -8,7 +8,7 @@ import java.util.*;
  * This class handles menu design and the user interaction.
  */
 
-public class Interface {
+public class MainMenu {
 
 	public static void main(String[] args) throws Exception {
         mainMenu();
@@ -40,7 +40,7 @@ public class Interface {
 	     }
 	 
 	 public static void showMainMenu() {
-		System.out.print("|=========================|\n" + 
+		System.out.println("|=========================|\n" + 
 		  		   "|------- Main Menu -------|\n" +
 		  		   "|=========================|\n" +
 		  		   "1. Courses\n" +

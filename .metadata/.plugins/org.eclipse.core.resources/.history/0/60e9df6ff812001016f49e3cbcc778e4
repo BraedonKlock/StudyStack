@@ -122,13 +122,13 @@ public class NotesManager {
             return;
         }
 
-        System.out.println("\n" + Interface.ConsoleColors.GREEN + "\n\nViewing: " + note.getName() + Interface.ConsoleColors.RESET);
+        System.out.println("\n" + Interface.ConsoleColors.GREEN + "Viewing: " + note.getName() + Interface.ConsoleColors.RESET);
         try (BufferedReader reader = new BufferedReader(new FileReader(note))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(Interface.ConsoleColors.YELLOW + line + Interface.ConsoleColors.RESET);
             }
-            System.out.println("\n\n");
+            System.out.println("\n\n\n\n");
         } catch (IOException e) {
             System.out.println("\n*Error reading note: " + e.getMessage() + "*\n");
         }

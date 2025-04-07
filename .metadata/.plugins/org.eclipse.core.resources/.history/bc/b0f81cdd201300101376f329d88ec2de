@@ -14,8 +14,8 @@ public class TaskManager {
 
     static Map<String, DayOfWeek> weekDays = new HashMap<>();
     static Scanner scanner = new Scanner(System.in);
-    
-    private static void initializeWeekDays() {
+
+    static {
         weekDays.put("Monday", new DayOfWeek("Monday"));
         weekDays.put("Tuesday", new DayOfWeek("Tuesday"));
         weekDays.put("Wednesday", new DayOfWeek("Wednesday"));
@@ -125,30 +125,27 @@ public class TaskManager {
     }
     
     public static void clearSchedule() throws StudyStackException {
-        try {
-            while (true) {
-                System.out.println("Do you want to clear your schedule? (1 = YES | 2 = NO):");
-                int clear = scanner.nextInt();
-                scanner.nextLine(); // Clear the newline character
-
-                if (clear == 1) {
-                    weekDays.clear();
-                    initializeWeekDays(); // <-- Add this
-                    saveTask();
-                    System.out.println("\n*Schedule cleared*\n");
-                    break;
-                } else if (clear == 2) {
-                    break;
-                } else {
-                    System.out.println("\n*Enter a valid number (1 = YES | 2 = NO)*\n");
-                }
-            }
-        } catch (InputMismatchException e) {
+    	try {
+    	while(true) {
+    	System.out.println("Do you want to clear your schedule? (1 = YES | 2 = N0):");
+    	int clear = scanner.nextInt();
+    	
+    	if (clear == 1) {
+    		weekDays.clear();
+    		saveTask();
+    		loadTaskFromFile();
+    	}
+    	if (clear == 2) break;
+    	
+    	else {
+    		System.out.println("\n*Enter a valid number(1 = YES | 2 = N0)*\n");
+    		}
+    	}
+    	}  catch (InputMismatchException e) {
             scanner.nextLine(); // Clear the bad input
-            throw new StudyStackException("\n*Enter a valid number (1 = YES | 2 = NO)*\n");
+            throw new StudyStackException("\n*Enter a valid number(1 = YES | 2 = NO)*\n");
         }
     }
-
 
     public static void saveTask() {
         try (FileWriter writer = new FileWriter("C:\\Users\\braed\\AcademicProjects\\StudyStack\\StudyStack\\schedule.csv")) {

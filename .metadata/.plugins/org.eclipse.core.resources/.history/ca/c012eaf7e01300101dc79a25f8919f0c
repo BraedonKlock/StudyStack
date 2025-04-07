@@ -40,7 +40,7 @@ public class Interface {
 	     }
 	 
 	 public static void showMainMenu() {
-		System.out.print("|=========================|\n" + 
+		System.out.println("|=========================|\n" + 
 		  		   "|------- Main Menu -------|\n" +
 		  		   "|=========================|\n" +
 		  		   "1. Courses\n" +
