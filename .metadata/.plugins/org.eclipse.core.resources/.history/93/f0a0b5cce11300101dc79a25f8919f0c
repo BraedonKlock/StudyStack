@@ -7,7 +7,7 @@ public class ScheduleInterface {
 	static Scanner scanner = new Scanner(System.in);
 	
 	public static void ShowMenu() {
-		System.out.print("|=========================|\n" + 
+		System.out.println("|=========================|\n" + 
 						   "|------- Task Menu -------|\n" +
 						   "|=========================|\n" +
 		  		   "1. Add task\n" +

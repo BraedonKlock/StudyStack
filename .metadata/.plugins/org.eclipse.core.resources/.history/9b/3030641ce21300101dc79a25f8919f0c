@@ -26,11 +26,11 @@ public class TaskManager {
     }
 
     public static void addTask() {
-	    System.out.print("Enter the name of the task or type \"2\" to exit: ");
+	    System.out.println("Enter the name of the task or type \"2\" to exit:");
 	    String taskName = scanner.nextLine().trim();
 	    if (taskName.equals("2")) return;
 
-	    System.out.print("Which day of the week do you want to add it to? or type \"2\" to exit: ");
+	    System.out.println("Which day of the week do you want to add it to? or type \"2\" to exit:");
 	    String dayInput = scanner.nextLine().trim();
 	    if (dayInput.equals("2")) return;
 
@@ -47,7 +47,7 @@ public class TaskManager {
 
 
 	public static void editTask() {
-	    System.out.print("Which day do you want to edit a task on? (or type \"2\" to exit): ");
+	    System.out.println("Which day do you want to edit a task on? (or type \"2\" to exit):");
 	    String dayInput = scanner.nextLine().trim();
 	    if (dayInput.equals("2")) return;
 
@@ -66,7 +66,7 @@ public class TaskManager {
 	    for (int i = 0; i < tasks.size(); i++) {
 	        System.out.println(i + ": " + tasks.get(i).getName());
 	    }
-	    System.out.print("Enter the number of the task to edit or type \"Exit\": ");
+	    System.out.println("Enter the number of the task to edit or type \"Exit:\"");
 	    String input = scanner.nextLine().trim();
 
 	    if (input.equalsIgnoreCase("Exit")) return;
@@ -78,7 +78,7 @@ public class TaskManager {
 	        System.out.println("\n*Invalid number. Please enter a valid task number*\n");
 	        return;
 	    }
-	    System.out.print("Enter the new task name or type \"2\" to exit: ");
+	    System.out.println("Enter the new task name or type \"2\" to exit:");
 	    String newName = scanner.nextLine();
 	    if (newName.equals("2")) return;
 
@@ -88,7 +88,7 @@ public class TaskManager {
 
 
     public static void deleteTask() {
-        System.out.print("Which day do you want to delete a task from? Or type \"2\" to exit: ");
+        System.out.println("Which day do you want to delete a task from? Or type \"2\" to exit:");
         String day = scanner.nextLine();
 	    if (day.equals("2")) return;
 
@@ -104,7 +104,7 @@ public class TaskManager {
                 System.out.println(i + ": " + tasks.get(i).getName());
             }
 
-            System.out.print("Enter the number of the task to delete or type \"exit\": ");
+            System.out.println("Enter the number of the task to delete or type \"exit:\"");
             String input = scanner.nextLine().trim();
 
             if (input.equalsIgnoreCase("Exit")) return;
@@ -127,7 +127,7 @@ public class TaskManager {
     public static void clearSchedule() throws StudyStackException {
         try {
             while (true) {
-                System.out.print("Do you want to clear your schedule? (1 = YES | 2 = NO): ");
+                System.out.println("Do you want to clear your schedule? (1 = YES | 2 = NO):");
                 int clear = scanner.nextInt();
                 scanner.nextLine(); // Clear the newline character
 

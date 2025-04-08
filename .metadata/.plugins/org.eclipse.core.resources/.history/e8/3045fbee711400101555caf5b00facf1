@@ -112,9 +112,9 @@ public class Interface {
 	
 	// menu design.
 	public static void courseShowMenu() {
-		System.out.print("|===========================|\n" + 
-				  		   "|------- Course Menu -------|\n" +
-				  		   "|===========================|\n" +
+		System.out.print("|=========================|\n" + 
+				  		   "|------- Main Menu -------|\n" +
+				  		   "|=========================|\n" +
 				  		   "1. Add course\n" +
 				  		   "2. Edit course\n" +
 				  		   "3. Delete course\n" +
