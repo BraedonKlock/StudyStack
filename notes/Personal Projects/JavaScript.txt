@@ -1,0 +1,10 @@
+JAVASCRIPT
+
+HTML is like the noun - Paragraph
+CSS is like the adjective - color
+JavaScript is like the verb - action
+
+== ~ loose equality
+=== ~ Strict equality
+
+

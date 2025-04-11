@@ -266,7 +266,7 @@ public class CourseList {
 	        
 	        // Confirm deletion. While loop controls user input
 	        while(true) {
-		        System.out.print("\n" + CourseList.get(index) + "\nAre you sure you want to delete this course? type 1 = \"yes\" or 2 = \"no\": ");
+		        System.out.print("\n*Are you sure you want to delete this course? type 1 = \"yes\" or 2 = \"no\": " + CourseList.get(index) + "*\n");
 		        int confirm = scanner.nextInt();
 		        try {
 		        if (confirm == 1) {

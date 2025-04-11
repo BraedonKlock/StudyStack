@@ -1,0 +1,14 @@
+TO LEARN:
+
+String manipulation
+Window Slider
+HashMaps
+Arrays 
+Sort
+Interface
+Abstraact
+Inheritance
+Polymorphism
+Method Overriding(Super)
+Exception Handling
+

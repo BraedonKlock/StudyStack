@@ -88,7 +88,7 @@ public class TaskManager {
 
 
     public static void deleteTask() {
-        System.out.print("\nWhich day do you want to delete a task from? Or type \"2\" to exit: ");
+        System.out.print("Which day do you want to delete a task from? Or type \"2\" to exit: ");
         String day = scanner.nextLine();
 	    if (day.equals("2")) return;
 
