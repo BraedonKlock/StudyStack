@@ -26,11 +26,11 @@ public class TaskManager {
     }
 
     public static void addTask() {
-	    System.out.print("\nEnter the name of the task or type \"2\" to exit: ");
+	    System.out.print("Enter the name of the task or type \"2\" to exit: ");
 	    String taskName = scanner.nextLine().trim();
 	    if (taskName.equals("2")) return;
 
-	    System.out.print("\nWhich day of the week do you want to add it to? or type \"2\" to exit: ");
+	    System.out.print("Which day of the week do you want to add it to? or type \"2\" to exit: ");
 	    String dayInput = scanner.nextLine().trim();
 	    if (dayInput.equals("2")) return;
 
@@ -47,11 +47,10 @@ public class TaskManager {
 
 
 	public static void editTask() {
-	    System.out.print("\nWhich day do you want to edit a task on? (or type \"2\" to exit): ");
+	    System.out.print("Which day do you want to edit a task on? (or type \"2\" to exit): ");
 	    String dayInput = scanner.nextLine().trim();
 	    if (dayInput.equals("2")) return;
-	    
-	    System.out.print("\n");
+
 	    DayOfWeek day = weekDays.get(capitalize(dayInput));
 	    if (day == null) {
 	        System.out.println("\n*Invalid day entered*\n");
@@ -79,7 +78,7 @@ public class TaskManager {
 	        System.out.println("\n*Invalid number. Please enter a valid task number*\n");
 	        return;
 	    }
-	    System.out.print("\nEnter the new task name or type \"2\" to exit: ");
+	    System.out.print("Enter the new task name or type \"2\" to exit: ");
 	    String newName = scanner.nextLine();
 	    if (newName.equals("2")) return;
 
@@ -129,7 +128,7 @@ public class TaskManager {
     public static void clearSchedule() throws StudyStackException {
         try {
             while (true) {
-                System.out.print("\nDo you want to clear your schedule? (1 = YES | 2 = NO): ");
+                System.out.print("Do you want to clear your schedule? (1 = YES | 2 = NO): ");
                 int clear = scanner.nextInt();
                 scanner.nextLine(); // Clear the newline character
 

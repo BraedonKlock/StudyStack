@@ -103,6 +103,7 @@ public class NotesManager {
 
         File note = selectNote(course);
         if (note == null || !note.exists()) {
+            System.out.println("\n*Note file does not exist*\n");
             return;
         }
 

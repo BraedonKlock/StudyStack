@@ -1,0 +1,112 @@
+
+~ Cross over cable used for NIC to NIC 
+	- There is no NIC in a switch
+
+~ Classes
+	- Class a first bit is:	     0
+	- Class b first 2  bits are: 10
+	- Class c first 3 bits are:  110
+
+~ ARP protocol is used to find a MAC address corresponding to a given IP
+address
+
+~ TCP and UDP programming
+
+~ A data blck with its headers is called a Protocol Data Unit (PDU)
+
+~ What is the name of the PDU at each layer
+	- frame is the dataLink layer
+	- segment is transport layer
+	- Packet is network layer
+	
+~ The dataLink layer encapsulates the packet
+
+~ IP addresses are added during encapsulation at layer 3 (network)
+
+~ MAC addressed are added during encapsulation at layer 2 (Datalink)
+
+~ Routing is done at layer 3 (network)
+
+~ TTL is found in layer 3 (network)
+
+~ Ethernet encapsulation encapsulates the destination MAC source MAC and Ether
+type
+
+~ Ether types 
+	- IPV4 0x0800
+	- ARP 0X0806
+
+
+~ Collision and Broadcast domains
+	- Collision is between pc and switch
+	- broadcast between routers - routers  and routers - switches
+
+
+
+
+~ The number of destination MAC addresses is determined by hops and end device
+~ How many Arp requests depends on how many local networks there are
+
+	PC0-----SWITCH0----ROUTER0----ROUTER1-----SWITCH1-----PC1
+ 3 ARP requests because there are 3 local networks. 3 destination MAC addresses
+
+
+
+
+~ What does tracert provide that ping doesn't?
+	- tracert shows the number of hops
+
+~ What are the componentts of a MAC address?
+	- 1st 3 bytes are OUI and the last 3 bytes are a unique number
+
+~ IPV6 
+	- unicast 
+	- anycast (Not equivalent to broadcast) 
+
+~ What is the purpose of the ACK and seq
+	- seq  order of packets recieved 
+	- ack is to confirm the packet was recieved
+
+~ What packet sequence does TCP use to set up a connection SYN,SYN-ACK,ACK
+~ What packet sequence does TCP use to take down a connection FIN, ACK
+
+~ TTL is found in layer 3 network
+
+~ What field in the incoming packet does a router use to forward it to the
+outgoing interface?
+	- IP destination address
+
+~ The four messages involved in a DHCP configuration?
+	-Discover,Offer,Request,Ack
+
+~ Which commands are based on the ICMP protocol?
+	- Ping and Trace Route
+
+~ What are the 7 layers of the OSI protocol stack
+7. Application
+6. Presentation
+5. Sesion
+4. Transport
+3. Network
+2. Data Link
+1. Physical
+
+~ The purpose of the seq # and ack #  in the TCP and UDP protocols are
+reliability, segments can be placed in the proper order. Confirmation that
+each segment has been recieved. Retransmission as required.
+
+~ Application lay eprotocols that use 
+TCP: FTP,HTTP,HTTPS,POP3
+UDP: TFTP,DNS,DHCP,VoIP
+
+~ Half duplex sending and recieving happens one at a time
+~ Full duplex sending and recieving happens at the same time
+
+HTTP(S) TRANSFERS FILES
+	- well known port: 80
+
+What does NAT change when a packet enters the external /public network?
+	- Source IP
+
+~ A PC sends a TCP window size of 0. What does this mean?
+	- The PC cannot recieve any data

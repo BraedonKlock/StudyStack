@@ -26,7 +26,7 @@ public class TaskManager {
     }
 
     public static void addTask() {
-	    System.out.print("\nEnter the name of the task or type \"2\" to exit: ");
+	    System.out.print("Enter the name of the task or type \"2\" to exit: ");
 	    String taskName = scanner.nextLine().trim();
 	    if (taskName.equals("2")) return;
 
@@ -47,11 +47,10 @@ public class TaskManager {
 
 
 	public static void editTask() {
-	    System.out.print("\nWhich day do you want to edit a task on? (or type \"2\" to exit): ");
+	    System.out.print("Which day do you want to edit a task on? (or type \"2\" to exit): ");
 	    String dayInput = scanner.nextLine().trim();
 	    if (dayInput.equals("2")) return;
-	    
-	    System.out.print("\n");
+
 	    DayOfWeek day = weekDays.get(capitalize(dayInput));
 	    if (day == null) {
 	        System.out.println("\n*Invalid day entered*\n");

@@ -10,6 +10,12 @@ public class NotesManager {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void CreateNote() {
+        System.out.print("Do you want to create a new note? (1 = Yes / 2 = No: ");
+        String startChoice = scanner.nextLine().trim();
+        if (!startChoice.equals("1")) {
+            return;
+        }
+
         String courseName = pickCourseFromCSV();
         if (courseName == null) return;
 
@@ -20,13 +26,15 @@ public class NotesManager {
 
             File courseInfo = coursePath.resolve("CourseInfo.txt").toFile();
             if (!courseInfo.exists()) {
-                System.out.print("\nCourseInfo.txt not found. Open it in Vim? (1 = Yes / 2 = No: ");
+                System.out.print("CourseInfo.txt not found. Open it in Vim? (1 = Yes / 2 = No: ");
                 String courseInfoChoice = scanner.nextLine().trim();
-                if (courseInfoChoice.equals("1")) {
-                	System.out.println("Opening CourseInfo.txt in Vim...");
-                	new ProcessBuilder("vim", courseInfo.getAbsolutePath()).inheritIO().start().waitFor();
-                	scanner = new Scanner(System.in);
+                if (!courseInfoChoice.equals("1")) {
+                    return;
                 }
+
+                System.out.println("Opening CourseInfo.txt in Vim...");
+                new ProcessBuilder("vim", courseInfo.getAbsolutePath()).inheritIO().start().waitFor();
+                scanner = new Scanner(System.in);
 
                 System.out.print("\nDo you want to create a new note as well? (1 = Yes / 2 = No: ");
                 String choice = scanner.nextLine().trim();
@@ -37,7 +45,7 @@ public class NotesManager {
 
             String fileName = "";
             while (fileName.isEmpty()) {
-                System.out.print("\nEnter note filename (without extension, or type 'exit' to cancel): ");
+                System.out.print("Enter note filename (without extension, or type 'exit' to cancel): ");
                 fileName = scanner.nextLine().trim();
                 if (fileName.equalsIgnoreCase("exit")) {
                     return;
@@ -47,7 +55,7 @@ public class NotesManager {
                     continue;
                 }
 
-                System.out.print("\nYou entered: \"" + fileName + "\". Continue? (1 = Yes / 2 = No: ");
+                System.out.print("You entered: \"" + fileName + "\". Continue? (1 = Yes / 2 = No: ");
                 String confirmFile = scanner.nextLine().trim();
                 if (!confirmFile.equals("1")) {
                     fileName = "";
@@ -55,6 +63,13 @@ public class NotesManager {
             }
 
             File noteFile = coursePath.resolve(fileName + ".txt").toFile();
+
+            System.out.println("You're about to create and edit the note: " + noteFile.getName());
+            System.out.print("Continue to Vim? (1 = Yes / 2 = No: ");
+            String finalChoice = scanner.nextLine().trim();
+            if (!finalChoice.equals("1")) {
+                return;
+            }
 
             new ProcessBuilder("vim", noteFile.getAbsolutePath()).inheritIO().start().waitFor();
         } catch (IOException | InterruptedException e) {
@@ -103,6 +118,7 @@ public class NotesManager {
 
         File note = selectNote(course);
         if (note == null || !note.exists()) {
+            System.out.println("\n*Note file does not exist*\n");
             return;
         }
 

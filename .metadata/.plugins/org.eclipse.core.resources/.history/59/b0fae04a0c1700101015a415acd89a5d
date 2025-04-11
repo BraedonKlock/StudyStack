@@ -42,7 +42,7 @@ public class CourseList {
 
     // Adding homework. While loop controls flow
     while (true) {
-        System.out.print("\nAdd Homework? (1 = yes/2 = no): ");
+        System.out.print("Add Homework? (1 = yes/2 = no): ");
         String response = scanner.nextLine().trim().toLowerCase();
 
         if (response.trim().equals("2"))
