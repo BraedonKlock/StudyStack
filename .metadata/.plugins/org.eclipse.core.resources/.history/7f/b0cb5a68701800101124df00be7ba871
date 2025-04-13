@@ -30,11 +30,11 @@ public class CourseList {
 	 
 	 // Add courses and associated homework
 	public static void addCourse() throws StudyStackException {
-    System.out.println("Enter course name (or type \"2\" to exit): ");
+    System.out.print("Enter course name (or type \"2\" to exit): ");
     String name = scanner.nextLine();
     if (name.trim().equals("2")) return;
 
-    System.out.println("Enter course code (or type \"2\" to exit): ");
+    System.out.print("Enter course code (or type \"2\" to exit): ");
     String courseCode = scanner.nextLine();
     if (courseCode.trim().equals("2")) return;
     
@@ -42,7 +42,7 @@ public class CourseList {
 
     // Adding homework. While loop controls flow
     while (true) {
-        System.out.println("Add Homework? (1 = yes/2 = no):");
+        System.out.print("\nAdd Homework? (1 = yes/2 = no): ");
         String response = scanner.nextLine().trim().toLowerCase();
 
         if (response.trim().equals("2"))
@@ -51,11 +51,11 @@ public class CourseList {
         	
         	// While loop controls flow and user input
             while (true) {
-                System.out.println("Homework name (or type \"2\" to stop adding homework):"); //
+                System.out.print("Homework name (or type \"2\" to stop adding homework): "); //
                 String homeworkName = scanner.nextLine();
                 if (homeworkName.trim().equals("2")) break;
 
-                    System.out.println("Due date (or type \"2\" to exit:");
+                    System.out.print("Due date (or type \"2\" to exit: ");
                    String dueDate = scanner.nextLine();
                     if (dueDate.trim().equals("2")) break;   
             
@@ -266,7 +266,7 @@ public class CourseList {
 	        
 	        // Confirm deletion. While loop controls user input
 	        while(true) {
-		        System.out.println("\n*Are you sure you want to delete this course? type 1 = \"yes\" or 2 = \"no\":\n" + CourseList.get(index) + "*\n");
+		        System.out.print("\n" + CourseList.get(index) + "\nAre you sure you want to delete this course? type 1 = \"yes\" or 2 = \"no\": ");
 		        int confirm = scanner.nextInt();
 		        try {
 		        if (confirm == 1) {
@@ -294,7 +294,7 @@ public class CourseList {
 	            throw new StudyStackException("\n*No jobs to search*\n"); // handling empty CourseList
 	        }
 
-	        System.out.println("\nEnter any keyword to search (course name, description, or tool name) or type \"2\" to exit:");
+	        System.out.print("\nEnter any keyword to search (course name, description, or tool name) or type \"2\" to exit: ");
 	        String term = scanner.nextLine().toLowerCase();
 	        if (term.trim().equals(2)) return;
 
